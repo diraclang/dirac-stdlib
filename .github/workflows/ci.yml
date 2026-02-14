@@ -1,0 +1,75 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run tests
+      run: npm test
+    
+    - name: Verify test count
+      run: |
+        TEST_OUTPUT=$(npm test 2>&1)
+        echo "$TEST_OUTPUT"
+        if ! echo "$TEST_OUTPUT" | grep -q "24 passed"; then
+          echo "Expected 24 tests to pass"
+          exit 1
+        fi
+
+  lint:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20.x
+    
+    - name: Check file structure
+      run: |
+        if [ ! -f "lib/index.di" ]; then
+          echo "Missing lib/index.di"
+          exit 1
+        fi
+        if [ ! -f "lib/math.di" ]; then
+          echo "Missing lib/math.di"
+          exit 1
+        fi
+        if [ ! -f "lib/string.di" ]; then
+          echo "Missing lib/string.di"
+          exit 1
+        fi
+        echo "File structure OK"
+    
+    - name: Check test files
+      run: |
+        TEST_COUNT=$(find tests -name "*.test.di" | wc -l)
+        if [ "$TEST_COUNT" -ne 24 ]; then
+          echo "Expected 24 test files, found $TEST_COUNT"
+          exit 1
+        fi
+        echo "Test files OK: $TEST_COUNT"

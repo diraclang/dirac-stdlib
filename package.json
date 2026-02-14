@@ -1,0 +1,32 @@
+{
+  "name": "dirac-stdlib",
+  "version": "0.1.0",
+  "description": "Standard library for DIRAC - Math and String operations",
+  "main": "lib/index.di",
+  "type": "module",
+  "scripts": {
+    "test": "node scripts/test.js"
+  },
+  "files": [
+    "lib/"
+  ],
+  "keywords": [
+    "dirac",
+    "stdlib",
+    "math",
+    "string"
+  ],
+  "author": "Zhi Wang",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wangzhi63/dirac-stdlib.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wangzhi63/dirac-stdlib/issues"
+  },
+  "homepage": "https://github.com/wangzhi63/dirac-stdlib#readme",
+  "devDependencies": {
+    "dirac-lang": "^0.1.26"
+  }
+}
