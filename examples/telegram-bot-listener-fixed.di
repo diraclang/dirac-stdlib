@@ -12,6 +12,7 @@
 <dirac>
   <import src="../lib/telegram.di" />
   <import src="../../dirac-json/lib/index.di" />
+ <!-- <import src="../../dirac/lib/ai.di" /> -->
   
   <!-- Configuration -->
   <defvar name="bot_token" trim="true"><environment name="TELEGRAM_BOT_TOKEN" /></defvar>

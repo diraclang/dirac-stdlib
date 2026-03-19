@@ -1,3 +1,4 @@
+<dirac>
 <doc>
 YouTube launcher subroutine library
 Can be imported and used with LLM context loading
@@ -40,3 +41,4 @@ Can be imported and used with LLM context loading
   
   <system>open <variable name="url" /></system>
 </subroutine>
+</dirac>
