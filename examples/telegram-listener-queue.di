@@ -7,8 +7,8 @@
   3. No LLM processing here - that's done by workers
 -->
 <dirac>
-  <import src="../../dirac-json/lib/index.di" />
-  <import src="../../dirac-flow/lib/flow.di" />
+  <import src="dirac-json/lib/index.di" />
+  <import src="dirac-flow/lib/flow.di" />
   
   <!-- Configuration -->
   <defvar name="bot_token" trim="true"><environment name="TELEGRAM_BOT_TOKEN" /></defvar>
