@@ -20,7 +20,7 @@
   </test-if>
   
   <!-- Define queue -->
-  <queue name="telegram-incoming" dir="../dirac-flow/examples/queues" />
+  <queue name="telegram-incoming" dir="/Users/zhiwang/diraclang/dirac-flow/examples/queues" />
   
   <output>
 🤖 Telegram Bot Listener (Queue Mode)
@@ -76,7 +76,8 @@ Listening for messages...
         
         <!-- Send to queue using queue-send -->
         <queue-send queue="telegram-incoming" dir="../dirac-flow/examples/queues">
-          &lt;message chat_id="<variable name="chat_id" />" text="<variable name="message_text" />" sender="<variable name="sender_name" />" /&gt;
+          &lt;message chat_id="<variable name="chat_id" />" text="<variable name="message_text" />" sender="<variable name="sender_name" />" &gt;
+          <variable name="message_text" />&lt;message&gt;
         </queue-send>
         
         <output>✅ Sent to telegram-incoming queue</output>
