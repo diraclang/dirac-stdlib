@@ -1,0 +1,215 @@
+# Common bash commands specification for DIRAC wrapper generation
+# Edit this file and run: node bash-to-dirac.js common-commands.yml > ../lib/bash-commands.di
+
+commands:
+  - name: ls
+    description: List directory contents
+    params:
+      - name: path
+        type: string
+        required: false
+        description: Directory to list (default current directory)
+        example: /tmp
+      - name: all
+        type: boolean
+        required: false
+        flag: -a
+        description: Show hidden files
+      - name: long
+        type: boolean
+        required: false
+        flag: -l
+        description: Use long listing format
+
+  - name: cat
+    description: Display file contents
+    params:
+      - name: file
+        type: string
+        required: true
+        description: File to display
+        example: file.txt
+
+  - name: echo
+    description: Display a message
+    params:
+      - name: message
+        type: string
+        required: true
+        description: Message to display
+        example: Hello World
+
+  - name: mkdir
+    description: Create directory
+    params:
+      - name: path
+        type: string
+        required: true
+        description: Directory path to create
+        example: /tmp/newdir
+      - name: parents
+        type: boolean
+        required: false
+        flag: -p
+        description: Create parent directories as needed
+
+  - name: rm
+    description: Remove files or directories
+    params:
+      - name: path
+        type: string
+        required: true
+        description: File or directory to remove
+        example: file.txt
+      - name: recursive
+        type: boolean
+        required: false
+        flag: -r
+        description: Remove directories recursively
+      - name: force
+        type: boolean
+        required: false
+        flag: -f
+        description: Force removal without confirmation
+
+  - name: cp
+    description: Copy files or directories
+    params:
+      - name: source
+        type: string
+        required: true
+        description: Source file or directory
+        example: file.txt
+      - name: destination
+        type: string
+        required: true
+        description: Destination path
+        example: /tmp/file.txt
+      - name: recursive
+        type: boolean
+        required: false
+        flag: -r
+        description: Copy directories recursively
+
+  - name: mv
+    description: Move or rename files
+    params:
+      - name: source
+        type: string
+        required: true
+        description: Source file or directory
+        example: old.txt
+      - name: destination
+        type: string
+        required: true
+        description: Destination path
+        example: new.txt
+
+  - name: grep
+    description: Search for patterns in files
+    params:
+      - name: pattern
+        type: string
+        required: true
+        description: Pattern to search for
+        example: error
+      - name: file
+        type: string
+        required: true
+        description: File to search in
+        example: log.txt
+      - name: ignorecase
+        type: boolean
+        required: false
+        flag: -i
+        description: Case-insensitive search
+
+  - name: curl
+    description: Transfer data from or to a server
+    params:
+      - name: url
+        type: string
+        required: true
+        description: URL to request
+        example: https://api.example.com
+      - name: method
+        type: string
+        required: false
+        flag: -X
+        description: HTTP method
+        options: [GET, POST, PUT, DELETE, PATCH]
+        example: POST
+      - name: data
+        type: string
+        required: false
+        flag: -d
+        description: Data to send in request body
+        example: '{"key":"value"}'
+
+  - name: wget
+    description: Download files from the web
+    params:
+      - name: url
+        type: string
+        required: true
+        description: URL to download
+        example: https://example.com/file.zip
+      - name: output
+        type: string
+        required: false
+        flag: -O
+        description: Output filename
+        example: downloaded.zip
+
+  - name: tar
+    description: Archive files
+    bashName: tar
+    params:
+      - name: file
+        type: string
+        required: true
+        flag: -f
+        description: Archive filename
+        example: archive.tar.gz
+      - name: create
+        type: boolean
+        required: false
+        flag: -c
+        description: Create new archive
+      - name: extract
+        type: boolean
+        required: false
+        flag: -x
+        description: Extract archive
+      - name: compress
+        type: boolean
+        required: false
+        flag: -z
+        description: Compress with gzip
+      - name: path
+        type: string
+        required: false
+        description: Files or directories to archive/extract
+        example: ./src
+
+  - name: find
+    description: Search for files in directory hierarchy
+    params:
+      - name: path
+        type: string
+        required: false
+        description: Starting directory (default current)
+        example: /tmp
+      - name: name
+        type: string
+        required: false
+        flag: -name
+        description: Search by filename pattern
+        example: "*.txt"
+      - name: type
+        type: string
+        required: false
+        flag: -type
+        description: Search by type
+        options: [f, d, l]
+        example: f
