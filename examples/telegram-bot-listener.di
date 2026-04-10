@@ -39,9 +39,9 @@ Send messages to your bot in Telegram!
   <!-- Schedule the polling task -->
   <schedule interval="${poll_interval}" name="telegram-bot-listener">
     <!-- Get updates from Telegram -->
-    <system output="updates" trim="true">
+    <defvar name="updates" trim="true><system>
       curl -s "https://api.telegram.org/bot<variable name="bot_token" />/getUpdates?offset=<variable name="last_update_id" />&amp;timeout=1"
-    </system>
+    </system></defvar>
     
     <!-- Check if we got any messages -->
     <test-if test="$updates" contains='"result":[]'>

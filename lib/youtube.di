@@ -1,9 +1,4 @@
 <dirac>
-<doc>
-YouTube launcher subroutine library
-Can be imported and used with LLM context loading
-</doc>
-
 <subroutine name="play-youtube" 
             description="Search and play a video on YouTube by title" 
             param-title="string:required:The video title or search query">
