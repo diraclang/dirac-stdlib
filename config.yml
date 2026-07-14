@@ -1,0 +1,11 @@
+# Default Dirac Configuration
+# This file is packaged with dirac-stdlib and provides sensible defaults
+
+# Initialization script to load on shell startup
+initScript: shell-init.di
+
+# Note: llmProvider and llmModel are auto-detected from environment variables:
+# - ANTHROPIC_API_KEY → anthropic/claude-sonnet-4
+# - OPENAI_API_KEY → openai/gpt-4o
+#
+# You can override by creating ~/.dirac/config.yml with your preferences
